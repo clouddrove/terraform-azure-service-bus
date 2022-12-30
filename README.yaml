@@ -1,0 +1,115 @@
+---
+#
+# This is the canonical configuration for the `README.md`
+# Run `make readme` to rebuild the `README.md`
+#
+
+# Name of this project
+name : Terraform AZURE BUS SERVICE
+
+# License of this project
+license: "APACHE"
+
+# Canonical GitHub repo
+github_repo: clouddrove/terraform-azure-bus-service
+
+# Badges to display
+badges:
+  - name: "Terraform"
+    image: "https://img.shields.io/badge/Terraform-v1.1.7-green"
+    url: "https://www.terraform.io"
+  - name: "Licence"
+    image: "https://img.shields.io/badge/License-APACHE-blue.svg"
+    url: "LICENSE.md"
+
+#  description of this project
+description: |-
+  Terraform module to create vpn resource on AZURE.
+# extra content
+include:
+  - "terraform.md"
+
+# How to use this project
+# How to use this project
+usage: |-
+  Here are some examples of how you can use this module in your inventory structure:
+  ### azure bus service
+  ```hcl
+    # Basic
+    module "service_bus" {
+    source              = "clouddrove/service-bus/azure"
+    version             = "1.0.0"
+    name                = "app"
+    resource_group_name = module.resource_group.resource_group_name
+    location            = module.resource_group.resource_group_location
+    sku                 = "Standard"
+    }
+    ```
+  ```hcl
+    # topic
+    module "service_bus" {
+    source              = "clouddrove/service-bus/azure"
+    version             = "1.0.0"
+    name                = "app"
+    resource_group_name = module.resource_group.resource_group_name
+    location            = module.resource_group.resource_group_location
+    sku                 = "Standard"
+    topics = [{
+      name = "example"
+      enable_partitioning = true
+      authorization_rules = [
+      {
+       name   = "example"
+       rights = ["listen", "send"]
+      }]
+     }]
+    }
+    ```
+  ```hcl
+    # queue
+    module "service_bus" {
+    source              = "clouddrove/service-bus/azure"
+    version             = "1.0.0"
+    name                = "app"
+    resource_group_name = module.resource_group.resource_group_name
+    location            = module.resource_group.resource_group_location
+    sku                 = "Standard"
+    queues = [{
+    name                = "example"
+    authorization_rules = [
+    {
+      name   = "example"
+      rights = ["listen", "send"]
+      }]
+    }]
+    }
+    ```
+  ```hcl
+    # topic_with_subscriptions
+    module "service_bus" {
+    source              = "clouddrove/service-bus/azure"
+    version             = "1.0.0"
+    name                = "app"
+    resource_group_name = module.resource_group.resource_group_name
+    location            = module.resource_group.resource_group_location
+    sku                 = "Standard"
+    topics = [
+     {
+       name                = "source"
+       enable_partitioning = true
+       subscriptions       = [
+        {
+          name               = "example"
+          forward_to         = "destination"
+          max_delivery_count = 1
+        }]
+      },
+     {
+       name = "destination"
+       enable_partitioning = true
+      }]
+    }
+    ```
+
+
+

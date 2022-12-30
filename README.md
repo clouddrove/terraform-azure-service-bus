@@ -1,1 +1,1 @@
-# terraform-azure-service-bus
+# terraform-azure-bus-service
