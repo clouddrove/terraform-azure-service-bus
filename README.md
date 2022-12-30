@@ -168,7 +168,10 @@ Here are some examples of how you can use this module in your inventory structur
 
 ## Outputs
 
-No output.
+| Name | Description |
+|------|-------------|
+| id | The namespace ID. |
+| name | The namespace name. |
 
 
 
