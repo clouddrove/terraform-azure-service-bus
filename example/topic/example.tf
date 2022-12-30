@@ -15,15 +15,16 @@ module "resource_group" {
 module "service_bus" {
   source = "./../../"
 
-  name = "example-huro-test"
+  name        = "example-huro-test"
+  environment = "test"
 
   resource_group_name = module.resource_group.resource_group_name
   location            = module.resource_group.resource_group_location
-  sku = "Standard"
+  sku                 = "Standard"
 
   topics = [
     {
-      name = "example"
+      name                = "example"
       enable_partitioning = true
       authorization_rules = [
         {
