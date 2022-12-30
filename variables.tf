@@ -1,6 +1,33 @@
+#Module      : LABEL
+#Description : Terraform label module variables.
 variable "name" {
   type        = string
-  description = "The name of the namespace."
+  default     = ""
+  description = "Name  (e.g. `app` or `cluster`)."
+}
+
+variable "environment" {
+  type        = string
+  default     = ""
+  description = "Environment (e.g. `prod`, `dev`, `staging`)."
+}
+
+variable "repository" {
+  type        = string
+  default     = ""
+  description = "Terraform current module repo"
+}
+
+variable "label_order" {
+  type        = list(any)
+  default     = []
+  description = "Label order, e.g. sequence of application name and environment `name`,`environment`,'attribute' [`webserver`,`qa`,`devops`,`public`,] ."
+}
+
+variable "managedby" {
+  type        = string
+  default     = ""
+  description = "ManagedBy, eg ''."
 }
 
 variable "resource_group_name" {
@@ -43,10 +70,5 @@ variable "queues" {
   description = "List of queues."
 }
 
-variable "tags" {
-  type        = map(string)
-  default     = {}
-  description = " Map of tags to assign to the resources."
-}
 
 
