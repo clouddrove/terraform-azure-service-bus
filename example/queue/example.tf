@@ -13,7 +13,7 @@ module "resource_group" {
 }
 
 module "service_bus" {
-  source = "./../../"
+  source = "clouddrove/service-bus/azure"
 
   name        = "example-huro-test"
   environment = "test"
