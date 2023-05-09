@@ -6,14 +6,14 @@ module "resource_group" {
   source  = "clouddrove/resource-group/azure"
   version = "1.0.2"
 
-  label_order = ["name", "environment"]
   name        = "rg"
   environment = "test"
+  label_order = ["name", "environment"]
   location    = "Canada Central"
 }
 
 module "service_bus" {
-  source = "./../.."
+  source = "clouddrove/service-bus/azure"
 
   name        = "example-huro"
   environment = "test"
