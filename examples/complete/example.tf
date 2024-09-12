@@ -1,6 +1,7 @@
 provider "azurerm" {
   features {}
-  subscription_id = "000000-11111-1223-XXX-XXXXXXXXXXXX"
+  # subscription_id = "000000-11111-1223-XXX-XXXXXXXXXXXX"
+  subscription_id = "068245d4-3c94-42fe-9c4d-9e5e1cabc60c"
 }
 
 locals {
@@ -27,10 +28,22 @@ module "service_bus" {
 
   resource_group_name = module.resource_group.resource_group_name
   location            = module.resource_group.resource_group_location
+  sku                 = "Basic"
 
+  queues = [
+    {
+      name = "example"
+      authorization_rules = [
+        {
+          name   = "example"
+          rights = ["listen", "send"]
+        }
+      ]
+    }
+  ]
   topics = [
     {
-      name                = "source"
+      name                = "example"
       enable_partitioning = true
       subscriptions = [
         {
@@ -39,10 +52,14 @@ module "service_bus" {
           max_delivery_count = 1
         }
       ]
-    },
-    {
-      name                = "destination"
-      enable_partitioning = true
+
+      authorization_rules = [
+        {
+          name   = "example"
+          rights = ["listen", "send"]
+        }
+      ]
     }
   ]
+
 }
