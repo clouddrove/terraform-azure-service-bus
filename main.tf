@@ -10,14 +10,6 @@ locals {
     }, rule)
   ]
 
-  default_authorization_rule = {
-    name                        = "RootManageSharedAccessKey"
-    primary_connection_string   = azurerm_servicebus_namespace.main.default_primary_connection_string
-    secondary_connection_string = azurerm_servicebus_namespace.main.default_secondary_connection_string
-    primary_key                 = azurerm_servicebus_namespace.main.default_primary_key
-    secondary_key               = azurerm_servicebus_namespace.main.default_secondary_key
-  }
-
   topics = [
     for topic in var.topics : merge({
       name                       = ""
