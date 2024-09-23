@@ -5,13 +5,13 @@
 #
 
 # Name of this project
-name : Terraform AZURE BUS SERVICE
+name : Terraform AZURE SERVICE BUS
 
 # License of this project
 license: "APACHE"
 
 # Canonical GitHub repo
-github_repo: clouddrove/terraform-azure-bus-service
+github_repo: clouddrove/terraform-azure-service-bus
 
 # Badges to display
 badges:
@@ -37,7 +37,7 @@ usage: |-
   ```hcl
     # Basic
     module "service_bus" {
-    source              = "clouddrove/service-bus/azure"
+    source              = "../.."
     version             = "1.0.0"
     name                = "app"
     resource_group_name = module.resource_group.resource_group_name
@@ -48,7 +48,7 @@ usage: |-
   ```hcl
     # topic
     module "service_bus" {
-    source              = "clouddrove/service-bus/azure"
+    source              = "../.."
     version             = "1.0.0"
     name                = "app"
     resource_group_name = module.resource_group.resource_group_name
@@ -68,7 +68,7 @@ usage: |-
   ```hcl
     # queue
     module "service_bus" {
-    source              = "clouddrove/service-bus/azure"
+    source              = "../.."
     version             = "1.0.0"
     name                = "app"
     resource_group_name = module.resource_group.resource_group_name
@@ -87,7 +87,7 @@ usage: |-
   ```hcl
     # topic_with_subscriptions
     module "service_bus" {
-    source              = "clouddrove/service-bus/azure"
+    source              = "../.."
     version             = "1.0.0"
     name                = "app"
     resource_group_name = module.resource_group.resource_group_name
