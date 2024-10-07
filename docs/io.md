@@ -21,4 +21,3 @@
 |------|-------------|
 | id | The namespace ID. |
 | name | The namespace name. |
-

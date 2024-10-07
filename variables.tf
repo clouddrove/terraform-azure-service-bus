@@ -69,6 +69,3 @@ variable "queues" {
   default     = []
   description = "List of queues."
 }
-
-
-
