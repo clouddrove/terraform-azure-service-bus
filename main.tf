@@ -144,9 +144,9 @@ resource "azurerm_servicebus_topic" "main" {
   status                       = local.topics[count.index].status
   auto_delete_on_idle          = local.topics[count.index].auto_delete_on_idle
   default_message_ttl          = local.topics[count.index].default_message_ttl
-  batched_operations_enabled   = local.topics[count.index].enable_batched_operations
-  express_enabled              = local.topics[count.index].enable_express
-  partitioning_enabled         = local.topics[count.index].enable_partitioning
+  batched_operations_enabled   = local.topics[count.index].batched_operations_enabled
+  express_enabled              = local.topics[count.index].express_enabled
+  partitioning_enabled         = local.topics[count.index].partitioning_enabled
   max_size_in_megabytes        = local.topics[count.index].max_size
   requires_duplicate_detection = local.topics[count.index].enable_duplicate_detection
   support_ordering             = local.topics[count.index].enable_ordering
@@ -207,8 +207,8 @@ resource "azurerm_servicebus_queue" "main" {
 
   auto_delete_on_idle                  = local.queues[count.index].auto_delete_on_idle
   default_message_ttl                  = local.queues[count.index].default_message_ttl
-  express_enabled                      = local.queues[count.index].enable_express
-  partitioning_enabled                 = local.queues[count.index].enable_partitioning
+  express_enabled                      = local.queues[count.index].express_enabled
+  partitioning_enabled                 = local.queues[count.index].partitioning_enabled
   lock_duration                        = local.queues[count.index].lock_duration
   max_size_in_megabytes                = local.queues[count.index].max_size
   requires_duplicate_detection         = local.queues[count.index].enable_duplicate_detection
